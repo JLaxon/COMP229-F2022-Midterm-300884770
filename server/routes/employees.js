@@ -36,14 +36,14 @@ router.post("/add", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
-  let newEmployee = Employee({
+  let newEmployee = employees({
     EmployeeId: req.body.EmployeeId,
     EmployeeName: req.body.EmployeeName,
     Department: req.body.Department,
     Designation: req.body.Designation,
     Salary: req.body.Salary,
   });
-  Employee.create(newEmployee, (err, Employee) => {
+  employees.create(newEmployee, (err, Employee) => {
     if (err) {
       console.log(err);
       res.end(err);
@@ -59,20 +59,20 @@ router.get("/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
-   let id = req.params.id; //id of actual object
+  let id = req.params.id; //id of actual object
 
-   Employee.findById(id, (err, employeetoedit) => {
-     if (err) {
-       console.log(err);
-       res.end(err);
-     } else {
-       //show the edit view
-       res.render("employees/details", {
-         title: "Edit Employee",
-         employee: employeetoedit,
-       });
-     }
-   });
+  employees.findById(id, (err, employeetoedit) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      //show the edit view
+      res.render("employees/details", {
+        title: "Edit an employee",
+        employees: employeetoedit,
+      });
+    }
+  });
 });
 
 // POST - process the information passed from the details form and update the document
@@ -80,25 +80,25 @@ router.post("/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
-   let id = req.params.id; //id of actual object
+  let id = req.params.id; //id of actual object
 
-   let updateemployee = Employee({
-     _id: id,
-     EmployeeId: req.body.EmployeeId,
-     EmployeeName: req.body.EmployeeName,
-     Department: req.body.Department,
-     Designation: req.body.Designation,
-     Salary: req.body.Salary,
-   });
-   Employee.updateOne({ _id: id }, updateemployee, (err) => {
-     if (err) {
-       console.log(err);
-       res.end(err);
-     } else {
-       //refresh the employee list
-       res.redirect("/employees");
-     }
-   });
+  let updateemployee = employees({
+    _id: id,
+    EmployeeId: req.body.EmployeeId,
+    EmployeeName: req.body.EmployeeName,
+    Department: req.body.Department,
+    Designation: req.body.Designation,
+    Salary: req.body.Salary,
+  });
+  Employee.updateOne({ _id: id }, updateemployee, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      //refresh the book list
+      res.redirect("/employees");
+    }
+  });
 });
 
 // GET - process the delete by specific employeename
