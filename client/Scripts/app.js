@@ -1,3 +1,8 @@
+// Filename: app.js
+// Author: Jonathan Laxon
+// Student Id: 300884770
+// Web App Name: Midterm
+
 /* custom JS goes here */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */

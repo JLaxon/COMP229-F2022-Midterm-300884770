@@ -1,3 +1,8 @@
+// Filename: employees.js
+// Author: Jonathan Laxon
+// Student Id: 300884770
+// Web App Name: Midterm
+
 let mongoose = require("mongoose");
 
 // create a model class

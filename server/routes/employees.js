@@ -1,3 +1,8 @@
+// Filename: employees.js
+// Author: Jonathan Laxon
+// Student Id: 300884770
+// Web App Name: Midterm
+
 // modules required for routing
 let express = require("express");
 let router = express.Router();
